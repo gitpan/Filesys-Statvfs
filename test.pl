@@ -18,44 +18,35 @@ print "ok 1\n";
 
 my $dir='/';
 my @result=Filesys::Statvfs::statvfs($dir);
-if(! defined @result) {
-	print"not ok 2\n";
-	print"error:$!\n";
-	print"statvfs() call failed for \"$dir\" \n";
-	exit(-1);
-}
-
-else {
-	print"ok 2\n";
-	print"statvfs() call succeded for directory: \"$dir\".\n";
-	my($bsize, $frsize, $blocks, $bfree, $bavail,
-        $files, $ffree, $favail, $fsid, $basetype, $flag,
-        $namemax, $fstr)=@result;
-
-	print"bsize=$bsize\n";
-	print"frsize=$frsize\n";
-	print"blocks=$blocks\n";
-	print"bfree=$bfree\n";
-	print"bavail=$bavail\n";
-	print"files=$files\n";
-	print"ffree=$ffree\n";
-	print"favail=$favail\n";
-	print"fsid=$fsid\n";
-	print"basetype=$basetype\n";
-	print"flag=$flag\n";
-	print"namemax=$namemax\n";
-	print"fstr=$fstr\n\n\n";
-}
+(! defined @result) &&
+	(die"not ok 2\nstatvfs\(\) call failed for \"$dir\" $!\n") ||
+	(print"ok 2\n");
 
 my $a_ref=df($dir);
-
 (! defined($a_ref)) &&
-	(die"not ok 3\ndf\(\) call failed: $!\n");
+	(die"not ok 3\ndf\(\) call failed: $!\n") ||
+	(print"ok 3\n");
 
-print"ok 3\n";
-print"The df() call succeded.  Results of df() call for $dir in 1024k blocks\n";
+print"All tests successful!\n\n";
+print"statvfs() call was successful. Results for directory: \"$dir\"\n";
+my($bsize, $frsize, $blocks, $bfree, $bavail,
+$files, $ffree, $favail, $fsid, $basetype, $flag,
+$namemax, $fstr)=@result;
+
+print"bsize=$bsize frsize=$frsize blocks=$blocks\n";
+print"bfree=$bfree bavail=$bavail files=$files\n";
+print"ffree=$ffree favail=$favail fsid=$fsid\n";
+print"basetype=$basetype flag=$flag namemax=$namemax\n";
+print"fstr=$fstr\n\n";
+
+
+print"The df() call was successful.  Results of df() call for \"$dir\" in 1024k blocks\n";
 print"Percent Full $a_ref->{PER}%\n";
 print"Total Blocks $a_ref->{BLOCKS}\n";
 print"Total Blocks Used $a_ref->{USED}\n";
-print"Total Blocks Available $a_ref->{SU_BAVAIL}\n";
+print"Total Blocks Available $a_ref->{BFREE}\n";
 print"Total Blocks Available To Non-SU $a_ref->{BAVAIL}\n";
+print"Inode Percent Full $a_ref->{FPER}%\n";
+print"Total Inodes $a_ref->{FILES}\n";
+print"Total Inodes Used $a_ref->{FUSED}\n";
+print"Total Inodes Free $a_ref->{FFREE}\n";

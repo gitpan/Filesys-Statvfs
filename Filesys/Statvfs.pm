@@ -8,7 +8,7 @@ require DynaLoader;
 
 @ISA = qw(Exporter DynaLoader);
 @EXPORT = qw(statvfs);
-$VERSION = '0.31';
+$VERSION = '0.43';
 bootstrap Filesys::Statvfs $VERSION;
 
 1;
@@ -38,7 +38,7 @@ set $! if there was an error.
 The values returned are described in the statvfs header. 
 
 Note:
-On Digital Unix the $fstr is NULL.
+On Digital Unix $fstr maybe NULL.
 
 =head1 AUTHOR
 
