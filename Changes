@@ -1,5 +1,8 @@
-Revision history for Perl extension Filesys.
+Revision history for Perl extension Filesys::Statvfs Filesys::Df
 
-0.01  Mon Jul 13 11:26:11 1998
+0.01  Mon Jul 14 11:26:11 1998
 	- original version; created by h2xs 1.18
 
+0.31 Mon Jul 27 1998
+	- Created a more functional test.pl
+	- Updated documentation

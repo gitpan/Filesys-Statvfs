@@ -10,7 +10,7 @@ require Exporter;
 
 @ISA = qw(Exporter);
 @EXPORT = qw(df);
-$VERSION = '0.30';
+$VERSION = '0.31';
 
 sub df {
 my $dir=shift;
@@ -32,7 +32,7 @@ my ($per, $user_used, $user_blocks);
 
 	return if(! defined($blocks));
 
-	####Return info in 1k blocks
+	####Return info in 1k blocks or specified size
         if($block_size > $frsize) {
                 $result=$block_size/$frsize;
                 $blocks=$blocks/$result;
@@ -79,6 +79,9 @@ my ($per, $user_used, $user_blocks);
 	#### round 
         $per*=100;
         $per+=.5;
+	####
+
+	#### over 100%
 	$per+=100 if($bfree != $bavail && $bavail < 0);
 	####
 
@@ -141,7 +144,7 @@ USER_USED   Total number of used blocks (Available to non super-user).
 
 USER_BAVAIL Total number of avaliable blocks (Available to non super-user).
 
-Most df applications will print out the SU_BLOCKS or USER_BLOCKS,
+Most 'df' applications will print out the SU_BLOCKS or USER_BLOCKS,
 USER_BAVAIL, SU_USED, and the percent full. So you will probably end
 up using these values the most.
 
@@ -155,6 +158,13 @@ If there was an error df() will return undef.
 Requirements:
 Your system must contain statvfs(). 
 You must be running perl.5003 or higher.
+
+Note:
+I based the way the percent full is measured
+based on what the HP-UX application 'bdf' returns.  The 'bdf'
+application seems to round a bit different than 'df' does
+but I like 'bdf' so that is what I based the percentages
+on.
 
 =head1 AUTHOR
 

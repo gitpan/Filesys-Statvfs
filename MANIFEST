@@ -7,4 +7,3 @@ Filesys/Statvfs.pm
 Filesys/Df.pm
 README
 typemap
-changes

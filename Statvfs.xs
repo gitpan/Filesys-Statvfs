@@ -5,7 +5,6 @@ extern "C" {
 #include "perl.h"
 #include "XSUB.h"
 #include<sys/statvfs.h>
-/* #include<string.h> */
 #ifdef __cplusplus
 }
 #endif
