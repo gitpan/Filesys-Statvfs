@@ -1,0 +1,34 @@
+TO INSTALL RUN:
+	
+	perl Makefile.PL
+	make
+	make test
+	make install
+
+For this module to install and work you will need
+to have statvfs() on your system. A good way to tell if
+it is there is to look for sys/statvfs.h in your 
+include directory. (Usually /usr/include/)
+
+If there is an error during the 'make' it is
+possible that you do not have statvfs() on your system.
+Another reason may be that the statvfs structure defined
+in statvfs.h does not contain one or more of the fields that are
+defined in Filesys.xs.
+
+During the 'make test' test.pl will use statvfs()
+to stat the root directory "/". If it fails it will
+report the error, otherwise it will report all the 
+standard fields in the statvfs structure. 
+
+In the future I plan on having support for statfs()
+and to to have all fields available for statvfs() depending
+on the OS. For instance HP-UX has two extra non standard
+fields in their statvfs structure.
+
+Once installed run 'perldoc Filesys::Statvfs' and
+'perldoc Filesys::Df' for more information.
+
+If you have any problems or questions please email
+me at IGuthrie@aol.com with "Filesys Module" in
+the subject line.
