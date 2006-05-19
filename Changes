@@ -1,12 +1,5 @@
-Revision history for Perl extension Filesys::Statvfs Filesys::Df
+Revision history for Perl extension Filesys::Df
 
-0.01  Mon Jul 14 11:26:11 1998
-	- original version; created by h2xs 1.18
-
-0.31 Mon Jul 27 1998
-	- Created a more functional test.pl
-	- Updated documentation
-
-0.43 Thu Jul 30 1998
-	- Added inode values to df().
-	- Updated documentation
+0.80  Thu May 18 23:00:11 2006
+	- Packaged Filesys::Statvfs in its own package since
+ 	  it is no longer packaged with Filesys::Df.

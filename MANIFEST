@@ -1,9 +1,9 @@
-Statvfs.xs
 Makefile.PL
-test.pl
-Changes
 MANIFEST
-Filesys/Statvfs.pm
-Filesys/Df.pm
 README
+Statvfs.pm
+Statvfs.xs
+test.pl
 typemap
+Changes
+META.yml                                 Module meta-data (added by MakeMaker)
